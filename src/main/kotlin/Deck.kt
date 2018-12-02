@@ -1,26 +1,24 @@
+import cards.Card
 import cards.Person
 import cards.Room
-import cards.Token
 import cards.Weapon
 
 class Deck(private val groups: Int) {
 
-    fun getCards(): List<List<Token>> {
+    fun getCards(): List<List<Card>> {
         val allCards = getAllCards().shuffled()
         val cardGroups = distributeCards(allCards)
         return cardGroups.values.toList()
     }
 
-    private fun getAllCards(): List<Token> {
-        return arrayOf(
-                Person.values() as Array <Token>,
-                Weapon.values() as Array<Token>,
-                Room.values() as Array<Token>)
-                .flatten()
+    private fun getAllCards(): List<Card> {
+        return Person.values().map { Card(person = it) } +
+                Weapon.values().map { Card(weapon = it) } +
+                Room.values().map { Card(room = it) }
     }
 
-    private fun distributeCards(allCards: List<Token>) : Map<Int, List<Token>>{
-        val cardGroups = mutableMapOf<Int, MutableList<Token>>()
+    private fun distributeCards(allCards: List<Card>): Map<Int, List<Card>> {
+        val cardGroups = mutableMapOf<Int, MutableList<Card>>()
         var cardCount = 0
         var player = 0
         while (cardCount < allCards.size) {

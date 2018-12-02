@@ -1,6 +1,11 @@
 package player
 
-import cards.Token
+import cards.Card
 
-class Notes(cards: List<Token>) {
+
+class Notes(cards: List<Card>) {
+
+    fun eliminate(card: Card) {
+
+    }
 }

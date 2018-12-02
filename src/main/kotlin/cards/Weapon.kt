@@ -1,6 +1,6 @@
 package cards
 
-enum class Weapon : Token {
+enum class Weapon {
     CANDLESTICK,
     KNIFE,
     PIPE,

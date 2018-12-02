@@ -1,9 +1,9 @@
 package player
 
 import Accusation
-import cards.Token
+import cards.Card
 
 interface PlayerController {
     fun makeAccusation() : Accusation
-    fun accusationResponse(accusation: Accusation) : Token
+    fun accusationResponse(accusation: Accusation) : Card
 }

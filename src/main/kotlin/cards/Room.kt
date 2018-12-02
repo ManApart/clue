@@ -1,6 +1,6 @@
 package cards
 
-enum class Room : Token {
+enum class Room {
     BALLROOM,
     BILLIARD_ROOM,
     CONSERVATORY,

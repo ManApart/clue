@@ -1,19 +1,22 @@
 package player
 
 import Accusation
+import cards.Card
 import cards.Person
-import cards.Token
+import cards.Room
+import cards.Weapon
 
-class AI(private val myCards: List<Token>, private val notes: Notes) : PlayerController {
+class AI(private val cards: List<Card>, private val notes: Notes) : PlayerController {
+
     override fun makeAccusation(): Accusation {
-        return Accusation(Person.PEACOCK)
+        return Accusation(Person.random(), Weapon.random(), Room.random())
     }
 
-    override fun accusationResponse(accusation: Accusation): Token {
+    override fun accusationResponse(accusation: Accusation): Card {
         return when {
-            myCards.contains(accusation.person) -> accusation.person
-            myCards.contains(accusation.weapon) -> accusation.weapon
-            myCards.contains(accusation.room) -> accusation.room
+            cards.any{ it.matches(accusation.person)} -> Card(accusation.person)
+            cards.any{ it.matches(accusation.weapon)} -> Card(weapon = accusation.weapon)
+            cards.any{ it.matches(accusation.room)} -> Card(room = accusation.room)
             else -> throw IllegalArgumentException("Should never offer a response without a card match")
         }
     }
