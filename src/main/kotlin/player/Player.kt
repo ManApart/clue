@@ -31,4 +31,8 @@ class Player(val person: Person, private val cards: List<Card>, private val note
         notes.eliminate(response)
     }
 
+    fun deduceResponse(accusation: Accusation) {
+        controller.deduceFromUnansweredResponse(accusation)
+    }
+
 }

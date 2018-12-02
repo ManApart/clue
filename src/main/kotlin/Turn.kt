@@ -10,7 +10,7 @@ class Turn(val player: Player, val accusation: Accusation) {
         println("$player makes $accusation")
 
         if (denials.isNotEmpty()) {
-            println("${denials.joinToString(",")} cannot deny the accusation")
+            println("${denials.joinToString(", ")} cannot deny the accusation")
         }
         if (responsePlayer != null) {
             println("$responsePlayer can deny the accusation")

@@ -24,16 +24,17 @@ class Game(players: List<Person>) {
         println("Starting game; looking for answer: $answer")
         var solved = false
         while (!solved) {
-            players.forEach { player ->
+                for (i: Int in 0 until players.size) {
+                    val player = players[i]
                 if (player.canSolve()) {
                     println("$player has solved the murder.")
                     print("Answer: $answer")
-                    return@forEach
+                    solved = true
+                    break
                 } else {
                     takeTurn(player)
                 }
             }
-            solved = true
         }
     }
 
@@ -51,9 +52,14 @@ class Game(players: List<Person>) {
                 turn.responsePlayer = other
                 break
             } else {
-                turn.denials.add(player)
+                turn.denials.add(other)
             }
         }
+
+        if (turn.response == null){
+            player.deduceResponse(accusation)
+        }
+
         history.addTurn(turn)
     }
 

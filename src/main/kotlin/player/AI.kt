@@ -6,6 +6,7 @@ import cards.Person
 import cards.Room
 import cards.Weapon
 
+//TODO - getting stuck when no one has an answer
 class AI(private val cards: List<Card>, private val notes: Notes) : PlayerController {
 
     override fun makeAccusation(): Accusation {
@@ -24,4 +25,20 @@ class AI(private val cards: List<Card>, private val notes: Notes) : PlayerContro
             else -> throw IllegalArgumentException("Should never offer a response without a card match")
         }
     }
+
+    override fun deduceFromUnansweredResponse(accusation: Accusation) {
+        if (!notes.isEliminated(Card(accusation.person))){
+            println("Discovered ${accusation.person}")
+            notes.murderer = accusation.person
+        }
+        if (!notes.isEliminated(Card(weapon = accusation.weapon))){
+            println("Discovered ${accusation.weapon}")
+            notes.murderWeapon = accusation.weapon
+        }
+        if (!notes.isEliminated(Card(room = accusation.room))){
+            println("Discovered ${accusation.room}")
+            notes.murderRoom = accusation.room
+        }
+    }
+
 }

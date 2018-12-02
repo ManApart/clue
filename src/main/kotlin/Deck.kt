@@ -29,7 +29,7 @@ class Deck(private val groups: Int) {
             cardGroups[player]?.add(allCards[cardCount])
             cardCount++
             player++
-            if (player > groups) {
+            if (player >= groups) {
                 player = 0
             }
         }
