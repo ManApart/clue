@@ -1,0 +1,5 @@
+import cards.Person
+import cards.Room
+import cards.Weapon
+
+class Accusation(val person: Person, val weapon: Weapon, val room: Room)

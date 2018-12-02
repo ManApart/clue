@@ -1,0 +1,3 @@
+package cards
+
+interface Token
