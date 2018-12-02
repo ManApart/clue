@@ -8,5 +8,11 @@ enum class Room : Token {
     KITCHEN,
     HALL,
     LOUNGE,
-    STUDY
+    STUDY;
+
+    companion object {
+        fun random() : Room {
+            return Room.values().toList().shuffled().first()
+        }
+    }
 }

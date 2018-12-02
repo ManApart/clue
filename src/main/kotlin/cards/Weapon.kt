@@ -6,5 +6,11 @@ enum class Weapon : Token {
     PIPE,
     REVOLVER,
     ROPE,
-    WRENCH
+    WRENCH;
+
+    companion object {
+        fun random() : Weapon {
+            return Weapon.values().toList().shuffled().first()
+        }
+    }
 }

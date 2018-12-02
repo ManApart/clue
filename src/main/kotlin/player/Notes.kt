@@ -1,4 +1,6 @@
 package player
 
-class Notes {
+import cards.Token
+
+class Notes(cards: List<Token>) {
 }

@@ -4,8 +4,7 @@ import Accusation
 import cards.Person
 import cards.Token
 
-class Player(private val person: Person, private val cards: List<Token>, private val controller: PlayerController = AI()) {
-    val notes = Notes()
+class Player(private val person: Person, private val cards: List<Token>, private val notes: Notes = Notes(cards),  private val controller: PlayerController = AI(cards, notes)) {
 
     fun makeAccusation() : Accusation {
         return controller.makeAccusation()
@@ -21,6 +20,10 @@ class Player(private val person: Person, private val cards: List<Token>, private
 
     fun canSolve() : Boolean {
         return false
+    }
+
+    fun viewResponse(response: Token) {
+
     }
 
 }

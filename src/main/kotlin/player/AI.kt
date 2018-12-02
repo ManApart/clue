@@ -1,14 +1,20 @@
 package player
 
 import Accusation
+import cards.Person
 import cards.Token
 
-class AI : PlayerController {
+class AI(private val myCards: List<Token>, private val notes: Notes) : PlayerController {
     override fun makeAccusation(): Accusation {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Accusation(Person.PEACOCK)
     }
 
     override fun accusationResponse(accusation: Accusation): Token {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return when {
+            myCards.contains(accusation.person) -> accusation.person
+            myCards.contains(accusation.weapon) -> accusation.weapon
+            myCards.contains(accusation.room) -> accusation.room
+            else -> throw IllegalArgumentException("Should never offer a response without a card match")
+        }
     }
 }
