@@ -10,6 +10,8 @@ class Game(players: List<Person>) {
     val cards = Deck(players.size).getCards(answer)
     val players = createPlayers(players)
 
+    val history = History()
+
     private fun createPlayers(players: List<Person>): List<Player> {
         val list = mutableListOf<Player>()
         for (i: Int in 0 until players.size) {
@@ -19,6 +21,7 @@ class Game(players: List<Person>) {
     }
 
     fun start() {
+        println("Starting game; looking for answer: $answer")
         var solved = false
         while (!solved) {
             players.forEach { player ->
@@ -27,28 +30,31 @@ class Game(players: List<Person>) {
                     print("Answer: $answer")
                     return@forEach
                 } else {
-                    makeAccusation(player)
+                    takeTurn(player)
                 }
             }
             solved = true
         }
     }
 
-    private fun makeAccusation(player: Player) {
+    private fun takeTurn(player: Player) {
         val accusation = player.makeAccusation()
-        println("$player makes $accusation")
+        val turn = Turn(player, accusation)
+
         val otherPlayers = getOtherPlayers(player)
         for (i: Int in 0 until otherPlayers.size) {
             val other = otherPlayers[i]
             if (other.canRespondToAccusation(accusation)) {
-                println("$other can deny the accusation")
                 val response = other.accusationResponse(accusation)
                 player.viewResponse(response)
+                turn.response = response
+                turn.responsePlayer = other
                 break
             } else {
-                println("$other cannot deny the accusation")
+                turn.denials.add(player)
             }
         }
+        history.addTurn(turn)
     }
 
     private fun getOtherPlayers(player: Player) : List<Player> {

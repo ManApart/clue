@@ -9,7 +9,11 @@ import cards.Weapon
 class AI(private val cards: List<Card>, private val notes: Notes) : PlayerController {
 
     override fun makeAccusation(): Accusation {
-        return Accusation(Person.random(), Weapon.random(), Room.random())
+//        return Accusation(Person.random(), Weapon.random(), Room.random())
+        val person = notes.getSuspects().first()
+        val weapon = notes.getSuspectedWeapons().first()
+        val room = notes.getSuspectedRooms().first()
+        return Accusation(person, weapon, room)
     }
 
     override fun accusationResponse(accusation: Accusation): Card {

@@ -24,7 +24,7 @@ class Player(val person: Person, private val cards: List<Card>, private val note
     }
 
     fun canSolve(): Boolean {
-        return false
+        return notes.canSolve()
     }
 
     fun viewResponse(response: Card) {
