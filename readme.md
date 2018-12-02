@@ -2,7 +2,7 @@
 
 Experiment with creating AI for the Clue board game.
 
-[![Build Status](https://travis-ci.org/ManApart/Clue.svg?branch=master)](https://travis-ci.org/ManApart/Clue)
+[![Build Status](https://travis-ci.org/ManApart/clue.svg?branch=master)](https://travis-ci.org/ManApart/clue)
 
 Game currently runs to completion with just process of elimination. In the future I'd like to use 'memory' and correlation to reduce the number of necessary turns to find a solution.
 
