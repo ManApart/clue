@@ -56,11 +56,12 @@ class Game(players: List<Person>) {
             }
         }
 
+        history.addTurn(turn)
+
         if (turn.response == null){
             player.deduceResponse(accusation)
         }
 
-        history.addTurn(turn)
     }
 
     private fun getOtherPlayers(player: Player) : List<Player> {
