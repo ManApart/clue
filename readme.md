@@ -13,7 +13,7 @@ Optimization:
 * Use informed decisions to make better guesses
 
 
-Process of elimination output:
+## Process of elimination output
 ```
 Connected to the target VM, address: '127.0.0.1:62522', transport: 'socket'
 Starting game; looking for answer: Accusation(person=GREEN, weapon=WRENCH, room=HALL)
