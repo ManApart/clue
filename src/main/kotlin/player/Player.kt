@@ -5,7 +5,11 @@ import cards.Person
 import Accusation
 import cards.Card
 
-class Player(private val person: Person, private val cards: List<Card>, private val notes: Notes = Notes(cards), private val controller: PlayerController = AI(cards, notes)) {
+class Player(val person: Person, private val cards: List<Card>, private val notes: Notes = Notes(cards), private val controller: PlayerController = AI(cards, notes)) {
+
+    override fun toString(): String {
+        return person.toString()
+    }
 
     fun makeAccusation(): Accusation {
         return controller.makeAccusation()
